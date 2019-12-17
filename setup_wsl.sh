@@ -17,7 +17,7 @@ download_from_flair_website() {
 install_flair() {
     # Install flair from deb package
     echo "Installing flair ${flair_latest}"
-    apt-get install -qq --reinstall ./downloads/$flair
+    apt-get install -qq --reinstall --allow-downgrades ./downloads/$flair
     if [ ! "$?" -eq 0 ]; then
         echo "[ERROR] Couldn't install $flair. Please conctact the Fluka forum for help."
         exit 1
