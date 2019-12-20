@@ -3,7 +3,7 @@
 # Check if the script run as root
 if [ "$EUID" -ne 0 ]; then
     echo "[ERROR] The installation script requires root privileges"
-    echo "        Please use: sudo ./setup_wsl.sh"
+    echo "        Please use: sudo ./setup_wsl_ubuntu-18.04.sh"
     exit 1
 fi
 
