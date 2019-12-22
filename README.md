@@ -6,11 +6,11 @@ and applications - directly on Windows, unmodified, without the overhead of a vi
 
 ## 1. Required software
 
-### 1.1 Windows Subsystem for Linux
+### 1.1. Windows Subsystem for Linux
 
 Windows Subsystem for Linux requires Windows 10 (build: 16299 [2017 Fall update] or greater) and admin rights during installation.
 
-#### 1.1.2 Enable Windows Subsystem for Linux
+#### 1.1.2. Enable Windows Subsystem for Linux
 
 Start a *PowerShell* as *Administrator* and run the following command:
 
@@ -31,7 +31,7 @@ to your Windows credentials.
 
 After the initialization, Ubuntu works just like a native Ubuntu 18.04 system.
 
-#### 1.1.5 Legacy console error
+#### 1.1.5. Legacy console error
 
 Sometimes you can't enter the new Linux username and password, and the following error message is appearing:
 
@@ -73,29 +73,29 @@ You can follow the installation steps for GNU/Linux to install the *gfor9.tgz* p
 
 ## 3. Running FLUKA and Flair
 
-### 3.1 Running Xming
+### 3.1. Running Xming
 
 After the installation, the Xming app will appear in the Start menu. You need to run this every time before
 you launch Flair (if it is not running already).
 
-### 3.2 Running Ubuntu
+### 3.2. Running Ubuntu
 
 Launch *Ubuntu* from the Start menu
 
-### 3.3 Running FLUKA and Flair
+### 3.3. Running FLUKA and Flair
 
 See the instructions on [fluka.cern](https://fluka.cern/documentation/running)
 
 ## 4. Updating FLUKA and Flair
 
-### 4.1 Update Flair
+### 4.1. Update Flair
 
-To update Flair (and *Ubuntu as well) run the following commands:
+To update Flair (and *Ubuntu* as well) run the following commands:
 
 > `sudo apt-get update`
 
 > `sudo apt-get upgrade`
 
-### 4.2 Update FLUKA
+### 4.2. Update FLUKA
 
 Manually install the latest package of FLUKA.
