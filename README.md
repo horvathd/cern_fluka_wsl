@@ -75,8 +75,7 @@ You can follow the installation steps for GNU/Linux to install the *gfor9.tgz* p
 
 ### 3.1. Running Xming
 
-After the installation, the Xming app will appear in the Start menu. You need to run this every time before
-you launch Flair (if it is not running already).
+Start the Xming app from the start menu.
 
 ### 3.2. Running Ubuntu
 
