@@ -63,7 +63,7 @@ Download the *setup_wsl_ubuntu-18.04.sh* script. Move the file to the desired fo
 
 > `sudo ./setup_wsl_ubuntu-18.04.sh`
 
-The script will install the necessary packages, and Flair.
+The script will install the necessary packages, configure *gfortran 8* and install Flair.
 
 ### 2.2. Download and install FLUKA
 
