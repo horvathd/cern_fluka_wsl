@@ -67,15 +67,9 @@ The script will install the necessary packages, and Flair.
 
 ### 2.2. Download and install FLUKA
 
-Download the GNU/Linux *\*gfor7_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release)
+Download the GNU/Linux *\*gfor9.tgz* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
 
-To install use the following command:
-
-> `sudo dpkg -i fluka-*Linux-gfor7_amd64.deb`
-
-### 2.3 Restart Ubuntu
-
-After the installation finished, restart *Ubuntu*.
+The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-macos).
 
 ## 3. Running FLUKA and Flair
 
