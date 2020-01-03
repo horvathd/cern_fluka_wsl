@@ -71,7 +71,7 @@ Download the GNU/Linux *\*gfor7_amd64.deb* package of FLUKA from [fluka.cern](ht
 
 To install use the following command:
 
-> `dpkg -i fluka-*Linux-gfor7_amd64.deb`
+> `sudo dpkg -i fluka-*Linux-gfor7_amd64.deb`
 
 ## 3. Running FLUKA and Flair
 
