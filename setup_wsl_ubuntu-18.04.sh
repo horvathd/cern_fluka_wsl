@@ -62,7 +62,7 @@ fi
 # Set up necessary envionment variables
 if ! grep --quiet "export DISPLAY=" ~/.bashrc; then
     echo "Setting up DISPLAY environmental variable"
-    
+
     echo "" >> ~/.bashrc
     echo "# Set DISPLAY environment variable for the X server" >> ~/.bashrc
     echo "export DISPLAY=:0" >> ~/.bashrc
