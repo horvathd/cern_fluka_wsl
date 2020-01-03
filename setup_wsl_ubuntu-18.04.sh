@@ -60,7 +60,7 @@ if [ ! "$?" -eq 0 ]; then
 fi
 
 # Set up necessary envionment variables
-if ! grep --quiet "export DISPLAY=:0" ~/.bashrc; then
+if ! grep --quiet "export DISPLAY=" ~/.bashrc; then
     echo "Setting up DISPLAY environmental variable"
     
     echo "" >> ~/.bashrc
