@@ -38,13 +38,19 @@ if [ ! "$?" -eq 0 ]; then
 fi
 
 echo "Installing necessary packages"
-apt-get install -y -qq make gawk gfortran tk gnuplot-x11 \
+apt-get install -y -qq make gawk gfortran gfortran-8 tk gnuplot-x11 \
     python3 python3-tk python3-pil python3-pil.imagetk python3-numpy \
     python3-scipy python3-dicom
 if [ ! "$?" -eq 0 ]; then
     echo "[ERROR] Couldn't install the necessary packages. Try again later."
     exit 1
 fi
+
+# Set gfortran-8 as default
+echo "Setting up gfortran-8 as default compiler"
+update-alternatives --quiet --remove-all gfortran
+update-alternatives --quiet --install /usr/bin/gfortran gfortran /usr/bin/gfortran-7 10
+update-alternatives --quiet --install /usr/bin/gfortran gfortran /usr/bin/gfortran-8 20
 
 echo "Installing Flair"
 apt-get install -y -qq flair
@@ -56,7 +62,8 @@ fi
 # Set up necessary envionment variables
 if ! grep --quiet "export DISPLAY=:0" ~/.bashrc; then
     echo "Setting up DISPLAY environmental variable"
-
+    
+    echo "" >> ~/.bashrc
     echo "# Set DISPLAY environment variable for the X server" >> ~/.bashrc
     echo "export DISPLAY=:0" >> ~/.bashrc
 fi
