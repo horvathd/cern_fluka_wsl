@@ -63,13 +63,15 @@ Download the *setup_wsl_ubuntu-18.04.sh* script. Move the file to the desired fo
 
 > `sudo ./setup_wsl_ubuntu-18.04.sh`
 
-The script will install the necessary packages, configure *gfortran 8*, and install Flair. After the installation
-finished, restart *Ubuntu*.
+The script will install the necessary packages, and Flair. After the installation finished, restart *Ubuntu*.
 
-### 2.2. Install FLUKA
+### 2.2. Download and install FLUKA
 
-You can follow the installation steps for GNU/Linux to install the *gfor9.tgz* package of FLUKA, on
-[fluka.cern](https://fluka.cern/documentation/installation/fluka-linux-macos)
+Download the GNU/Linux *\*gfor7_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release)
+
+To install use the following command:
+
+> `dpkg -i fluka-*Linux-gfor7_amd64.deb`
 
 ## 3. Running FLUKA and Flair
 
