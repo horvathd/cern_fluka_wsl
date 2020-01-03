@@ -63,7 +63,7 @@ Download the *setup_wsl_ubuntu-18.04.sh* script. Move the file to the desired fo
 
 > `sudo ./setup_wsl_ubuntu-18.04.sh`
 
-The script will install the necessary packages, and Flair. After the installation finished, restart *Ubuntu*.
+The script will install the necessary packages, and Flair.
 
 ### 2.2. Download and install FLUKA
 
@@ -72,6 +72,10 @@ Download the GNU/Linux *\*gfor7_amd64.deb* package of FLUKA from [fluka.cern](ht
 To install use the following command:
 
 > `sudo dpkg -i fluka-*Linux-gfor7_amd64.deb`
+
+### 2.3 Restart Ubuntu
+
+After the installation finished, restart *Ubuntu*.
 
 ## 3. Running FLUKA and Flair
 
