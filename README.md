@@ -40,10 +40,7 @@ Sometimes you can't enter the new Linux username and password, and the following
 To solve this, right click on the *Title bar* of the windows of *Ubuntu*, and select *Properties*. On the *Options* tab
 disable the *Use Legacy Console* option, and click *OK*. To apply the change you have to close *Ubuntu*.
 
-To restart the initialization, *Ubuntu* has to be reset. To do so search for *Ubuntu* in the *Start Menu*,
-right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset* button.
-When the reset is complete close the settings window and restart *Ubuntu*. The initialization will start again,
-and now you will be able to enter the new Linux username and password.
+To restart the initialization, *Ubuntu* has to be reset. See 5. for instructions. When it is finished, start *Ubuntu* again, to start the initialization again.
 
 #### 1.1.6. Accessing files in WSL
 
@@ -67,9 +64,9 @@ The script will install the necessary packages, configure *gfortran 8* and insta
 
 ### 2.2. Download and install FLUKA
 
-Download the GNU/Linux *\*gfor9.tgz* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
+Download the GNU/Linux *\*gfor7_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
 
-The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-macos).
+The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-rpm-deb).
 
 ## 3. Running FLUKA and Flair
 
@@ -98,3 +95,9 @@ To update Flair (and *Ubuntu* as well) run the following commands:
 ### 4.2. Update FLUKA
 
 Manually install the latest package of FLUKA.
+
+## 5. Resetting WSL
+
+If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu* in the
+*Start Menu*, right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset*
+button. When the reset is complete close the settings window and restart *Ubuntu*.
