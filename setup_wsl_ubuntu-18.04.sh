@@ -46,7 +46,7 @@ if [ ! "$?" -eq 0 ]; then
     exit 1
 fi
 
-# Set gfortran-8 as default
+# Set gfortran-7 as default
 echo "Setting up gfortran-7 as default compiler"
 update-alternatives --quiet --remove-all gfortran
 update-alternatives --quiet --install /usr/bin/gfortran gfortran /usr/bin/gfortran-7 10
