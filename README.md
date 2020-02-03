@@ -56,9 +56,9 @@ Download and install the *Public Domain Release* version from http://www.straigh
 
 ### 2.1. Setting up Ubuntu and install Flair
 
-Download the *setup_wsl_ubuntu-18.04.sh* script. Move the file to the desired folder in *Ubuntu* and run the script:
+Download the *setup_wsl.sh* script. Move the file to the desired folder in *Ubuntu* and run the script:
 
-> `sudo ./setup_wsl_ubuntu-18.04.sh`
+> `sudo ./setup_wsl.sh`
 
 The script will install the necessary packages, configure *gfortran 8* and install Flair.
 

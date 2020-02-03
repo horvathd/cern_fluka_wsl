@@ -3,7 +3,7 @@
 # Check if the script run as root
 if [ "$EUID" -ne 0 ]; then
     echo "[ERROR] The installation script requires root privileges"
-    echo "        Please use: sudo ./setup_wsl_ubuntu-18.04.sh"
+    echo "        Please use: sudo ./setup_ubuntu.sh"
     exit 1
 fi
 
@@ -59,12 +59,9 @@ if [ ! "$?" -eq 0 ]; then
 fi
 
 # Set up necessary envionment variables
-if ! grep --quiet "export DISPLAY=" ~/.bashrc; then
+if [[ -z "${DISPLAY}" ]]; then
     echo "Setting up DISPLAY environmental variable"
-
-    echo "" >> ~/.bashrc
-    echo "# Set DISPLAY environment variable for the X server" >> ~/.bashrc
-    echo "export DISPLAY=:0" >> ~/.bashrc
+    echo "export DISPLAY=:0" > /etc/profile.d/wsl.sh
 fi
 
 echo "Install complete"
