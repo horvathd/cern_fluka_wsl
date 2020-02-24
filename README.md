@@ -60,7 +60,7 @@ Download the *setup_wsl.sh* script. Move the file to the desired folder in *Ubun
 
 > `sudo ./setup_wsl.sh`
 
-The script will install the necessary packages, configure *gfortran 8* and install Flair.
+The script will install the necessary packages, configure *gfortran 7* and install Flair.
 
 ### 2.2. Download and install FLUKA
 
