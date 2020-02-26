@@ -10,7 +10,7 @@ and applications - directly on Windows, unmodified, without the overhead of a vi
 
 Windows Subsystem for Linux requires Windows 10 (build: 16299 [2017 Fall update] or greater) and admin rights during installation.
 
-#### 1.1.2. Enable Windows Subsystem for Linux
+#### 1.1.1. Enable Windows Subsystem for Linux
 
 Start a *PowerShell* as *Administrator* and run the following command:
 
@@ -18,11 +18,11 @@ Start a *PowerShell* as *Administrator* and run the following command:
 
 When the command asks, reboot the PC to finalize the installation.
 
-#### 1.1.3. Get Ubuntu Linux from the Microsoft Store
+#### 1.1.2. Get Ubuntu Linux from the Microsoft Store
 
 In the *Microsoft Store*, search for *Ubuntu* and click on the *Get* button, then on *Install*.
 
-#### 1.1.4. Initialize Ubuntu
+#### 1.1.3. Initialize Ubuntu
 
 To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu* in the *Start Menu*.
 
@@ -31,7 +31,7 @@ to your Windows credentials.
 
 After the initialization, Ubuntu works just like a native Ubuntu 18.04 system.
 
-#### 1.1.5. Legacy console error
+#### 1.1.4. Legacy console error
 
 Sometimes you can't enter the new Linux username and password, and the following error message is appearing:
 
@@ -42,7 +42,7 @@ disable the *Use Legacy Console* option, and click *OK*. To apply the change you
 
 To restart the initialization, *Ubuntu* has to be reset. See 5. for instructions. When it is finished, start *Ubuntu* again, to start the initialization again.
 
-#### 1.1.6. Accessing files in WSL
+#### 1.1.5. Accessing files in WSL
 
 The windows drives (C:\\, D:\\, etc.) are automatically mounted at: `/mnt/<drive_letter>/...`
 
