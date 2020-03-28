@@ -7,8 +7,23 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# Add Flair repository
-REPO="https://cern.ch/flair/download/ubuntu/18.04"
+# Check Ubuntu version
+ubuntu_codename=$(lsb_release -c | awk '{print $2}')
+
+# Set Flair repository
+if [ "$ubuntu_codename" = "bionic" ]; then
+    REPO="https://cern.ch/flair/download/ubuntu/18.04"
+    gfortran="gfortran-7"
+elif [ "$ubuntu_codename" = "focal" ]; then
+    REPO="https://cern.ch/flair/download/ubuntu/20.04"
+    gfortran="gfortran-9"
+
+    echo "[ERROR] The support for Ubuntu 20.04 is not yet implemented"
+    exit 1
+else
+    echo "[ERROR] The installation script requires Ubuntu 18.04 or 20.04"
+    exit 1
+fi
 
 # If repository is not present
 if ! grep -q "$REPO" /etc/apt/sources.list; then
@@ -37,19 +52,27 @@ if [ ! "$?" -eq 0 ]; then
     exit 1
 fi
 
+# Packages to install
+packages="make gawk gfortran tk gnuplot-x11 python3 python3-pip python3-tk python3-pil python3-pil.imagetk python3-numpy python3-scipy"
+
 echo "Installing necessary packages"
-apt-get install -y -qq make gawk gfortran tk gnuplot-x11 \
-    python3 python3-tk python3-pil python3-pil.imagetk python3-numpy \
-    python3-scipy python3-dicom
+apt-get install -y -qq $packages
+if [ ! "$?" -eq 0 ]; then
+    echo "[ERROR] Couldn't install the necessary packages. Try again later."
+    exit 1
+fi
+
+# Install pydicom
+pip3 install pydicom
 if [ ! "$?" -eq 0 ]; then
     echo "[ERROR] Couldn't install the necessary packages. Try again later."
     exit 1
 fi
 
 # Set gfortran-7 as default
-echo "Setting up gfortran-7 as default compiler"
+echo "Setting up ${gfortran} as default compiler"
 update-alternatives --quiet --remove-all gfortran
-update-alternatives --quiet --install /usr/bin/gfortran gfortran /usr/bin/gfortran-7 10
+update-alternatives --quiet --install /usr/bin/gfortran gfortran /usr/bin/$gfortran 10
 
 echo "Installing Flair"
 apt-get install -y -qq flair

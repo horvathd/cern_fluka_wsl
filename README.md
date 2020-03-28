@@ -90,7 +90,13 @@ To update Flair (and *Ubuntu* as well) run the following commands:
 
 > `sudo apt-get update`
 
-> `sudo apt-get upgrade`
+> `sudo apt-get install flair flair-geoviewer`
+
+To update the whole Ubuntu system use
+
+> `sudo apt-get update`
+
+as well.
 
 ### 4.2. Update FLUKA
 
