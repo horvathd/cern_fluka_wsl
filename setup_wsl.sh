@@ -72,7 +72,7 @@ fi
 # Set gfortran-7 as default
 echo "Setting up ${gfortran} as default compiler"
 update-alternatives --quiet --remove-all gfortran
-update-alternatives --quiet --install /usr/bin/gfortran gfortran /usr/bin/$gfortran 10
+update-alternatives --quiet --install /usr/bin/gfortran gfortran /usr/bin/${gfortran} 10
 
 echo "Installing Flair"
 apt-get install -y -qq flair
