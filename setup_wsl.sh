@@ -63,7 +63,7 @@ if [ ! "$?" -eq 0 ]; then
 fi
 
 # Install pydicom
-pip3 install pydicom
+pip3 --no-cache-dir install pydicom
 if [ ! "$?" -eq 0 ]; then
     echo "[ERROR] Couldn't install the necessary packages. Try again later."
     exit 1
