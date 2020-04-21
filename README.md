@@ -56,7 +56,8 @@ Download and install the *Public Domain Release* version from http://www.straigh
 
 ### 2.1. Setting up Ubuntu and install Flair
 
-Download the *setup_wsl.sh* script. Move the file to the desired folder in *Ubuntu* and run the script:
+Download the *setup_wsl.sh* script from [here](https://raw.githubusercontent.com/horvathd/cern_fluka_wsl/master/setup_wsl.sh) (Right click, save link as ...).
+In the *Ubuntu* terminal change the directory to the downloaded script and run the following command:
 
 > `sudo ./setup_wsl.sh`
 
