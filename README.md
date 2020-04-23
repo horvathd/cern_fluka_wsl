@@ -61,7 +61,7 @@ In the *Ubuntu* terminal change the directory to the downloaded script and run t
 
 > `sudo ./setup_wsl.sh`
 
-The script will install the necessary packages, configure *gfortran 7* and install Flair.
+The script will install the necessary packages and Flair.
 
 ### 2.2. Download and install FLUKA
 
