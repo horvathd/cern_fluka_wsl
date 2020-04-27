@@ -46,7 +46,7 @@ if ! grep -q "$REPO" /etc/apt/sources.list; then
     echo "Adding Flair repository"
 
     # Add GPG key
-    wget -q -O - https://cern.ch/flair/download/ubuntu/KEY.gpg | sudo apt-key add -
+    wget -q -O - https://cern.ch/flair/download/ubuntu/KEY.gpg | apt-key add -
     if [ ! "$?" -eq 0 ]; then
         echo "[ERROR] Couldn't add repository GPG key. Try again later."
         exit 1
