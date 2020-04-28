@@ -24,7 +24,7 @@ In the *Microsoft Store*, search for *Ubuntu 18.04* and click on the *Get* butto
 
 #### 1.1.3. Initialize Ubuntu
 
-To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu* in the *Start Menu*.
+To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu 18.04* in the *Start Menu*.
 
 After a couple minutes it will ask for a new Linux username and password. They can be anything, as they are not related
 to your Windows credentials.
@@ -95,7 +95,7 @@ To update Flair (and *Ubuntu* as well) run the following commands:
 
 To update the whole Ubuntu system use
 
-> `sudo apt-get update`
+> `sudo apt-get upgrade`
 
 as well.
 
