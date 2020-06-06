@@ -20,7 +20,7 @@ When the command asks, reboot the PC to finalize the installation.
 
 #### 1.1.2. Get Ubuntu Linux from the Microsoft Store
 
-In the *Microsoft Store*, search for *Ubuntu 18.04* and click on the *Get* button, then on *Install*.
+In the *Microsoft Store*, search for *Ubuntu 18.04 LTS* and click on the *Get* button, then on *Install*.
 
 #### 1.1.3. Initialize Ubuntu
 
