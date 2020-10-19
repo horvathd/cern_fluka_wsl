@@ -15,9 +15,6 @@ if [ "$ubuntu_codename" = "bionic" ]; then
     REPO="https://cern.ch/flair/download/ubuntu/18.04"
 elif [ "$ubuntu_codename" = "focal" ]; then
     REPO="https://cern.ch/flair/download/ubuntu/20.04"
-
-    echo "[ERROR] The support for Ubuntu 20.04 is not yet implemented"
-    exit 1
 else
     echo "[ERROR] The installation script requires Ubuntu 18.04 or 20.04"
     exit 1
@@ -27,15 +24,15 @@ fi
 packages="make gawk gfortran tk gnuplot-x11 python3 python3-tk python3-pil python3-pil.imagetk python3-numpy python3-scipy python3-matplotlib python3-dicom"
 
 # Install required packages
-echo "Updating package list"
+echo "Updating package list ..."
 apt-get update -qq
 if [ ! "$?" -eq 0 ]; then
     echo "[ERROR] Couldn't update pacakge list. Try again later."
     exit 1
 fi
 
-echo "Installing necessary packages"
-apt-get install -y -qq $packages
+echo "Installing necessary packages ..."
+apt-get install -y -qq $packages > /dev/null
 if [ ! "$?" -eq 0 ]; then
     echo "[ERROR] Couldn't install the necessary packages. Try again later."
     exit 1
@@ -43,7 +40,7 @@ fi
 
 # If repository is not present
 if ! grep -q "$REPO" /etc/apt/sources.list; then
-    echo "Adding Flair repository"
+    echo "Adding Flair repository ..."
 
     # Add GPG key
     wget -q -O - https://cern.ch/flair/download/ubuntu/KEY.gpg | apt-key add -
@@ -60,17 +57,42 @@ if ! grep -q "$REPO" /etc/apt/sources.list; then
     fi
 fi
 
-echo "Installing Flair"
-apt-get install -y -qq flair
+echo "Installing Flair ..."
+apt-get install -y -qq flair > /dev/null
 if [ ! "$?" -eq 0 ]; then
     echo "[ERROR] Couldn't install Flair. Try again later."
     exit 1
 fi
 
 # Set up necessary envionment variables
-if [[ -z "${DISPLAY}" ]]; then
-    echo "Setting up DISPLAY environmental variable"
-    echo "export DISPLAY=:0" > /etc/profile.d/wsl.sh
+echo "Setting up DISPLAY environmental variable ..."
+scriptname="/etc/profile.d/flair_wsl.sh"
+
+# Trying to determine WSL version
+uname=$(uname -r)
+
+if [ $(echo ${uname} | grep "Microsoft") ]; then
+    WSL_version="1"
+    echo "WSL version 1 has been detected"
+elif [ $(echo ${uname} | grep "microsoft-standard") ]; then
+    WSL_version="2"
+    echo "WSL version 2 has been detected"
+else
+    echo "[WARNING] WSL version could not be determined."
+    echo "Please set WSL version manually (1 or 2):"
+    read WSL_version
+
+    if [ $WSL_version != "1" ] && [ $WSL_version != "2" ]; then
+        echo "[ERROR] Unsupported WSL version."
+        exit 1
+    fi
 fi
 
-echo "Install complete"
+# Writing script for DISPLAY
+if [ $WSL_version == "1" ]; then
+    echo "export DISPLAY=:0" > $scriptname
+elif [ $WSL_version == "2" ]; then
+    echo "export DISPLAY=`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0" > $scriptname
+fi
+
+echo "Install complete - Please close Ubuntu to finialaze installation."

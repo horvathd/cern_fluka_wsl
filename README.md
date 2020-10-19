@@ -20,11 +20,11 @@ When the command asks, reboot the PC to finalize the installation.
 
 #### 1.1.2. Get Ubuntu Linux from the Microsoft Store
 
-In the *Microsoft Store*, search for *Ubuntu 18.04 LTS* and click on the *Get* button, then on *Install*.
+In the *Microsoft Store*, search for *Ubuntu 20.04 LTS* and click on the *Get* button, then on *Install*.
 
 #### 1.1.3. Initialize Ubuntu
 
-To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu 18.04* in the *Start Menu*.
+To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu 20.04 LTS* in the *Start Menu*.
 
 After a couple minutes it will ask for a new Linux username and password. They can be anything, as they are not related
 to your Windows credentials.
@@ -38,19 +38,25 @@ Sometimes you can't enter the new Linux username and password, and the following
 > Unsupported console settings. In order to use this feature the legacy console must be disabled.
 
 To solve this, right click on the *Title bar* of the windows of *Ubuntu*, and select *Properties*. On the *Options* tab
-disable the *Use Legacy Console* option, and click *OK*. To apply the change you have to close *Ubuntu*.
+disable the *Use Legacy Console* option, and click *OK*. To apply the change you have to close *Ubuntu 20.04 LTS*.
 
-To restart the initialization, *Ubuntu* has to be reset. See 5. for instructions. When it is finished, start *Ubuntu* again, to start the initialization again.
+To restart the initialization, *Ubuntu* has to be reset. See 5. for instructions. When it is finished, start *Ubuntu 20.04 LTS* again, to start the initialization again.
 
 #### 1.1.5. Accessing files in WSL
 
 The windows drives (C:\\, D:\\, etc.) are automatically mounted at: `/mnt/<drive_letter>/...`
 
-### 1.2. Install Xming
+### 1.2. Install an X Server
 
-Xming X Server for Windows is necessary to visualize the Flair's graphical interface.
+An X Server for Windows is necessary to visualize the Flair's graphical interface. The following two X servers are recommended. Only one has to be installed.
+
+#### 1.1.1. Xming
 
 Download and install the *Public Domain Release* version from http://www.straightrunning.com/XmingNotes/
+
+#### 1.1.2. MobaXTerm
+
+Download and install the *Home* edition from https://mobaxterm.mobatek.net/
 
 ## 2. Installing FLUKA and Flair
 
@@ -61,23 +67,25 @@ In the *Ubuntu* terminal change the directory to the downloaded script and run t
 
 > `sudo ./setup_wsl.sh`
 
-The script will install the necessary packages and Flair.
+The script will install the necessary packages and Flair. To finalize the installation the window of *Ubuntu 20.04 LTS* must be closed.
 
 ### 2.2. Download and install FLUKA
 
-Download the GNU/Linux *\*gfor7_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
+Download the GNU/Linux *\*gfor9_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
 
 The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-rpm-deb).
 
 ## 3. Running FLUKA and Flair
 
-### 3.1. Running Xming
+### 3.1. Running the X Server
 
-Start the Xming app from the start menu.
+Start the Xming or MobaXTerm app from the start menu.
 
-### 3.2. Running Ubuntu
+If you are using Xming with WSL2, then the XLaunch app must be used with *No Access Control* enabled, instead of Xming.
 
-Launch *Ubuntu* from the Start menu
+### 3.2. Running Ubuntu 20.04 LTS
+
+Launch *Ubuntu 20.04 LTS* from the Start menu
 
 ### 3.3. Running FLUKA and Flair
 
@@ -108,3 +116,11 @@ Manually install the latest package of FLUKA.
 If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu* in the
 *Start Menu*, right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset*
 button. When the reset is complete close the settings window and restart *Ubuntu*.
+
+## 6. Known issues
+
+### 6.1 Flair couldn't connect to display
+
+If Flair shows the Following error message `couldn't connect to display`. Make sure that the X Server is running before launching Flair.
+
+If Flair still can't connect and the error message contains an IP addess then you have WSL2 installed. See section 3.1.
