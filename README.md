@@ -73,7 +73,7 @@ The script will install the necessary packages and Flair.
 
 Download the GNU/Linux *\*gfor9_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
 
-The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-rpm-deb).
+The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-rpm-deb). See section: *Installing FLUKA using .deb files*.
 
 ### 2.3. Restarting Ubuntu
 
