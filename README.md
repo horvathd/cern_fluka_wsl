@@ -29,7 +29,7 @@ To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu 20
 After a couple minutes it will ask for a new Linux username and password. They can be anything, as they are not related
 to your Windows credentials.
 
-After the initialization, Ubuntu works just like a native Ubuntu 18.04 system.
+After the initialization, Ubuntu works just like a native Ubuntu 20.04 system.
 
 #### 1.1.4. Legacy console error
 
