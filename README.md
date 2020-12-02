@@ -67,13 +67,17 @@ In the *Ubuntu* terminal change the directory to the downloaded script and run t
 
 > `sudo ./setup_wsl.sh`
 
-The script will install the necessary packages and Flair. To finalize the installation the window of *Ubuntu 20.04 LTS* must be closed.
+The script will install the necessary packages and Flair. 
 
 ### 2.2. Download and install FLUKA
 
 Download the GNU/Linux *\*gfor9_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
 
 The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-rpm-deb).
+
+### 2.3. Restarting Ubuntu
+
+To finalize the installation the terminal window of *Ubuntu 20.04 LTS* must be closed and reopened.
 
 ## 3. Running FLUKA and Flair
 
