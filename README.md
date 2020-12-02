@@ -87,7 +87,7 @@ Start the Xming or MobaXTerm app from the start menu.
 
 If you are using Xming with WSL2, then the XLaunch app must be used with *No Access Control* enabled, instead of Xming.
 
-### 3.2. Running Ubuntu 20.04 LTS
+### 3.2. Running Ubuntu
 
 Launch *Ubuntu 20.04 LTS* from the Start menu
 
@@ -99,27 +99,27 @@ See the instructions on [fluka.cern](https://fluka.cern/documentation/running)
 
 ### 4.1. Update Flair
 
-To update Flair (and *Ubuntu* as well) run the following commands:
+To update Flair run the following commands:
 
 > `sudo apt-get update`
 
 > `sudo apt-get install flair flair-geoviewer`
 
-To update the whole Ubuntu system use
+To update the whole Ubuntu system (including Flair) use:
+
+> `sudo apt-get update`
 
 > `sudo apt-get upgrade`
 
-as well.
-
 ### 4.2. Update FLUKA
 
-Manually install the latest package of FLUKA.
+Manually install the latest package of FLUKA as described in section 2.2.
 
 ## 5. Resetting WSL
 
-If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu* in the
+If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu 20.04 LTS * in the
 *Start Menu*, right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset*
-button. When the reset is complete close the settings window and restart *Ubuntu*.
+button. When the reset is complete close the settings window and restart *Ubuntu 20.04 LTS*.
 
 ## 6. Known issues
 
