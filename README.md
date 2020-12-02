@@ -117,7 +117,7 @@ Manually install the latest package of FLUKA as described in section 2.2.
 
 ## 5. Resetting WSL
 
-If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu 20.04 LTS * in the
+If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu 20.04 LTS* in the
 *Start Menu*, right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset*
 button. When the reset is complete close the settings window and restart *Ubuntu 20.04 LTS*.
 
