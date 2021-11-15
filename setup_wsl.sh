@@ -92,7 +92,7 @@ fi
 if [ $WSL_version == "1" ]; then
     echo "export DISPLAY=:0" > $scriptname
 elif [ $WSL_version == "2" ]; then
-    echo "export DISPLAY=`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0" > $scriptname
+    echo "export DISPLAY=\`\grep nameserver /etc/resolv.conf | sed 's/nameserver //'\`:0" > $scriptname
 fi
 
 echo "Install complete - Please close Ubuntu to finialaze installation."
