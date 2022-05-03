@@ -31,6 +31,13 @@ if [ ! "$?" -eq 0 ]; then
     exit 1
 fi
 
+echo "Updating system packages ..."
+apt-get upgrade -qq
+if [ ! "$?" -eq 0 ]; then
+    echo "[ERROR] Couldn't update system packages. Try again later."
+    exit 1
+fi
+
 echo "Installing necessary packages ..."
 apt-get install -y -qq $packages > /dev/null
 if [ ! "$?" -eq 0 ]; then
