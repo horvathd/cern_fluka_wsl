@@ -11,12 +11,12 @@ fi
 ubuntu_codename=$(lsb_release -c | awk '{print $2}')
 
 # Set Flair repository
-if [ "$ubuntu_codename" = "bionic" ]; then
-    REPO="https://cern.ch/flair/download/ubuntu/18.04"
-elif [ "$ubuntu_codename" = "focal" ]; then
+if [ "$ubuntu_codename" = "focal" ]; then
     REPO="https://cern.ch/flair/download/ubuntu/20.04"
+elif [ "$ubuntu_codename" = "jammy" ]; then
+    REPO="https://cern.ch/flair/download/ubuntu/22.04"
 else
-    echo "[ERROR] The installation script requires Ubuntu 18.04 or 20.04"
+    echo "[ERROR] The installation script requires Ubuntu 20.04 or 22.04"
     exit 1
 fi
 
@@ -43,14 +43,14 @@ if ! grep -q "$REPO" /etc/apt/sources.list; then
     echo "Adding Flair repository ..."
 
     # Add GPG key
-    wget -q -O - https://cern.ch/flair/download/ubuntu/KEY.gpg | apt-key add -
+    wget -q -O - https://cern.ch/flair/download/ubuntu/flair.gpg | apt-key add -
     if [ ! "$?" -eq 0 ]; then
         echo "[ERROR] Couldn't add repository GPG key. Try again later."
         exit 1
     fi
 
     # Add repository
-    add-apt-repository "deb [arch=all,amd64] $REPO  ./"
+    add-apt-repository "deb [arch=all,amd64] $REPO ./"
     if [ ! "$?" -eq 0 ]; then
         echo "[ERROR] Couldn't add repository. Try again later."
         exit 1

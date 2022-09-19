@@ -1,6 +1,6 @@
-# Installing CERN's FLUKA and Flair on Windows 10 using WSL
+# Installing CERN's FLUKA and Flair on Windows using WSL
 
-It is recommended to use the Windows Subsystem for Linux (WSL) for running CERN's FLUKA and Flair on Windows 10.
+It is recommended to use the Windows Subsystem for Linux (WSL) for running CERN's FLUKA and Flair on Windows.
 The Windows Subsystem for Linux lets developers run GNU/Linux environment - including most command-line tools, utilities,
 and applications - directly on Windows, unmodified, without the overhead of a virtual machine.
 
@@ -8,7 +8,7 @@ and applications - directly on Windows, unmodified, without the overhead of a vi
 
 ### 1.1. Windows Subsystem for Linux
 
-Windows Subsystem for Linux requires Windows 10 (build: 16299 [2017 Fall update] or greater) and admin rights during installation.
+Windows Subsystem for Linux requires Windows 10 (build: 16299 [2017 Fall update] or greater) or Windows 11.
 
 #### 1.1.1. Enable Windows Subsystem for Linux
 
@@ -20,16 +20,16 @@ When the command asks, reboot the PC to finalize the installation.
 
 #### 1.1.2. Get Ubuntu Linux from the Microsoft Store
 
-In the *Microsoft Store*, search for *Ubuntu 20.04 LTS* and click on the *Get* button, then on *Install*.
+In the *Microsoft Store*, search for *Ubuntu 20.04* or *Ubuntu 22.04* and click on the *Get* button, then on *Install*.
 
 #### 1.1.3. Initialize Ubuntu
 
-To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu 20.04 LTS* in the *Start Menu*.
+To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu 20.04.x (22.04.x) LTS* in the *Start Menu*.
 
 After a couple minutes it will ask for a new Linux username and password. They can be anything, as they are not related
 to your Windows credentials.
 
-After the initialization, Ubuntu works just like a native Ubuntu 20.04 system.
+After the initialization, *Ubuntu* works just like a native Linux system.
 
 #### 1.1.4. Legacy console error
 
@@ -38,9 +38,9 @@ Sometimes you can't enter the new Linux username and password, and the following
 > Unsupported console settings. In order to use this feature the legacy console must be disabled.
 
 To solve this, right click on the *Title bar* of the windows of *Ubuntu*, and select *Properties*. On the *Options* tab
-disable the *Use Legacy Console* option, and click *OK*. To apply the change you have to close *Ubuntu 20.04 LTS*.
+disable the *Use Legacy Console* option, and click *OK*. To apply the change you have to close *Ubuntu*.
 
-To restart the initialization, *Ubuntu* has to be reset. See 5. for instructions. When it is finished, start *Ubuntu 20.04 LTS* again, to start the initialization again.
+To restart the initialization, *Ubuntu* has to be reset. See 5. for instructions. When it is finished, start *Ubuntu* again, to start the initialization again.
 
 #### 1.1.5. Accessing files in WSL
 
@@ -67,7 +67,7 @@ In the *Ubuntu* terminal change the directory to the downloaded script and run t
 
 > `sudo ./setup_wsl.sh`
 
-The script will install the necessary packages and Flair. 
+The script will install the necessary packages and Flair.
 
 ### 2.2. Download and install FLUKA
 
@@ -89,7 +89,7 @@ If you are using Xming with WSL2, then the XLaunch app must be used with *No Acc
 
 ### 3.2. Running Ubuntu
 
-Launch *Ubuntu 20.04 LTS* from the Start menu
+Launch *Ubuntu 20.04.x (22.04.x) LTS* from the Start menu
 
 ### 3.3. Running FLUKA and Flair
 
@@ -117,9 +117,9 @@ Manually install the latest package of FLUKA as described in section 2.2.
 
 ## 5. Resetting WSL
 
-If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu 20.04 LTS* in the
+If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu 20.04.x (22.04.x) LTS* in the
 *Start Menu*, right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset*
-button. When the reset is complete close the settings window and restart *Ubuntu 20.04 LTS*.
+button. When the reset is complete close the settings window and restart *Ubuntu*.
 
 ## 6. Known issues
 
