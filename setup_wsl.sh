@@ -24,7 +24,7 @@ fi
 # Check Ubuntu version
 ubuntu_codename=$(lsb_release -c | awk '{print $2}')
 
-# Set Flair repository
+# Set repositories
 if [ "$ubuntu_codename" = "focal" ]; then
     REPO="https://cern.ch/flair/download/ubuntu/20.04"
 elif [ "$ubuntu_codename" = "jammy" ]; then
@@ -41,7 +41,6 @@ elif [ "$ubuntu_codename" = "jammy" ]; then
 
         echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
     fi
-fi
 else
     echo "[ERROR] The installation script requires Ubuntu 20.04 or 22.04"
     exit 1
