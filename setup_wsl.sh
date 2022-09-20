@@ -33,13 +33,12 @@ elif [ "$ubuntu_codename" = "jammy" ]; then
     if [ $WSL_version != "0" ]; then
         sudo add-apt-repository ppa:mozillateam/ppa
 
-        echo '
-        Package: *
-        Pin: release o=LP-PPA-mozillateam
-        Pin-Priority: 1001
-        ' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+        echo 'Package: *
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
+' | tee /etc/apt/preferences.d/mozilla-firefox
 
-        echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
+        echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
     fi
 else
     echo "[ERROR] The installation script requires Ubuntu 20.04 or 22.04"
