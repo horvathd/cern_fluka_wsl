@@ -46,7 +46,7 @@ else
 fi
 
 # Packages to install
-packages="make gawk gfortran tk gnuplot-x11 python3 python3-tk python3-pil python3-pil.imagetk python3-numpy python3-scipy python3-matplotlib python3-dicom ttf-ancient-fonts firefox"
+packages="make gawk gfortran tk gnuplot-x11 python3 python3-tk python3-pil python3-pil.imagetk python3-numpy python3-scipy python3-matplotlib python3-dicom libz-dev ttf-ancient-fonts firefox"
 
 # Install required packages
 echo "Updating package list ..."
