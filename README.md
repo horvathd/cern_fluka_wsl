@@ -1,103 +1,113 @@
-# Installing CERN's FLUKA and Flair on Windows using WSL
+# Installing FLUKA.CERN and Flair on Windows using WSL
 
 It is recommended to use the Windows Subsystem for Linux (WSL) for running CERN's FLUKA and Flair on Windows.
 The Windows Subsystem for Linux lets developers run GNU/Linux environment - including most command-line tools, utilities,
 and applications - directly on Windows, unmodified, without the overhead of a virtual machine.
 
-## 1. Required software
 
-### 1.1. Windows Subsystem for Linux
+## 1. Enable Windows Subsystem for Linux
 
-Windows Subsystem for Linux requires Windows 10 (build: 16299 [2017 Fall update] or greater) or Windows 11.
-
-#### 1.1.1. Enable Windows Subsystem for Linux
+### 1.1. For Windows 10 version 2004 (build number 19041, released in May 2020) or newer and for Windows 11:
 
 Start a *PowerShell* as *Administrator* and run the following command:
 
-> `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`
+> `wsl --install`
+
+*Ubuntu* will be automatically installed as well.
 
 When the command asks, reboot the PC to finalize the installation.
 
-#### 1.1.2. Get Ubuntu Linux from the Microsoft Store
+### 1.2. For older Windows 10 versions
 
-In the *Microsoft Store*, search for *Ubuntu 20.04* or *Ubuntu 22.04* and click on the *Get* button, then on *Install*.
+Follow the instructions from [here](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
 
-#### 1.1.3. Initialize Ubuntu
+You may skip Steps 2 through 5, if you don't want to update to WSL version 2.
 
-To initialize simply click *Launch* in the *Microsoft Store*, or find *Ubuntu 20.04.x (22.04.x) LTS* in the *Start Menu*.
+In Step 6, install *Ubuntu 20.04* or *Ubuntu 22.04*.
+
+
+## 2. Initialize Ubuntu
+
+After the installation start *Ubuntu* from the start menu, or click the *Open* button in the *Microsoft Store*.
 
 After a couple minutes it will ask for a new Linux username and password. They can be anything, as they are not related
 to your Windows credentials.
 
 After the initialization, *Ubuntu* works just like a native Linux system.
 
-#### 1.1.4. Legacy console error
-
-Sometimes you can't enter the new Linux username and password, and the following error message is appearing:
-
-> Unsupported console settings. In order to use this feature the legacy console must be disabled.
-
-To solve this, right click on the *Title bar* of the windows of *Ubuntu*, and select *Properties*. On the *Options* tab
-disable the *Use Legacy Console* option, and click *OK*. To apply the change you have to close *Ubuntu*.
-
-To restart the initialization, *Ubuntu* has to be reset. See 5. for instructions. When it is finished, start *Ubuntu* again, to start the initialization again.
-
-#### 1.1.5. Accessing files in WSL
+### 2.1. Accessing files in WSL
 
 The windows drives (C:\\, D:\\, etc.) are automatically mounted at: `/mnt/<drive_letter>/...`
 
-### 1.2. Install an X Server
 
-An X Server for Windows is necessary to visualize the Flair's graphical interface. The following two X servers are recommended. Only one has to be installed.
+## 3. Setting up for FLUKA and installing Flair
 
-#### 1.1.1. Xming
+### 3.1. Running the setup script
 
-Download and install the *Public Domain Release* version from http://www.straightrunning.com/XmingNotes/
+Download the zip file containing the setup script from [here](https://github.com/horvathd/cern_fluka_wsl/archive/refs/heads/master.zip),
+and extract its content.
 
-#### 1.1.2. MobaXTerm
-
-Download and install the *Home* edition from https://mobaxterm.mobatek.net/
-
-## 2. Installing FLUKA and Flair
-
-### 2.1. Setting up Ubuntu and install Flair
-
-Download the *setup_wsl.sh* script from [here](https://raw.githubusercontent.com/horvathd/cern_fluka_wsl/master/setup_wsl.sh) (Right click, save link as ...).
-In the *Ubuntu* terminal change the directory to the downloaded script and run the following command:
+In the *Ubuntu* terminal change the directory to the location of the downloaded script and run the following command:
 
 > `sudo ./setup_wsl.sh`
 
-The script will install the necessary packages and Flair.
+The script will install Flair and the necessary packages FLUKA. The setup process will take a few minutes.
 
-### 2.2. Download and install FLUKA
+Restart *Ubuntu* after the script finished.
+
+### 3.2. Install an X Server
+
+An X Server for Windows is necessary to visualize the Flair's graphical interface.
+
+#### 3.2.1. WSLg
+
+If you are using a WSL release with an included X Server you don't need to install any third-party X Server.
+Run the following command in *PowerShell* or *Ubuntu* to check if WSL's X Server is available:
+
+> `wsl.exe --version`
+
+If you get a valid version number for WSLg then the X Server is working. Otherwise, a third-party X Server needs to be installed.
+The following two free X servers are recommended. Only one has to be installed.
+
+#### 3.2.2. Xming
+
+Download and install the *Public Domain Release* version from http://www.straightrunning.com/XmingNotes/
+
+#### 3.2.3. MobaXTerm
+
+Download and install the *Home* edition from https://mobaxterm.mobatek.net/
+
+
+## 4. Download and install FLUKA
 
 Download the GNU/Linux *\*gfor9_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
 
-The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-rpm-deb). See section: *Installing FLUKA using .deb files*.
+The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-rpm-deb).
+See section: *Installing FLUKA using .deb files*.
 
-### 2.3. Restarting Ubuntu
+To finalize the installation *Ubuntu* must be closed and reopened.
 
-To finalize the installation the terminal window of *Ubuntu 20.04 LTS* must be closed and reopened.
 
-## 3. Running FLUKA and Flair
+## 5. Running FLUKA and Flair
 
-### 3.1. Running the X Server
+### 5.1. Running the X Server
 
-Start the Xming or MobaXTerm app from the start menu.
+If you installed a third-party X Server (Xming or MobaXTerm), you need to start it first.
 
 If you are using Xming with WSL2, then the XLaunch app must be used with *No Access Control* enabled, instead of Xming.
 
-### 3.2. Running Ubuntu
+### 5.2. Running Ubuntu
 
-Launch *Ubuntu 20.04.x (22.04.x) LTS* from the Start menu
+Launch *Ubuntu* from the Start Menu.
 
-### 3.3. Running FLUKA and Flair
+### 5.3. Running FLUKA and Flair
 
 See the instructions on [fluka.cern](https://fluka.cern/documentation/running)
 
-## 4. Updating FLUKA and Flair
 
-### 4.1. Update Flair
+## 6. Updating FLUKA and Flair
+
+### 6.1. Update Flair
 
 To update Flair run the following commands:
 
@@ -111,20 +121,22 @@ To update the whole Ubuntu system (including Flair) use:
 
 > `sudo apt-get upgrade`
 
-### 4.2. Update FLUKA
+### 6.2. Update FLUKA
 
-Manually install the latest package of FLUKA as described in section 2.2.
+Manually install the latest package of FLUKA as described in section 4.
 
-## 5. Resetting WSL
 
-If there is an issue with WSL, you can always reset it to a clean state. To do so search for *Ubuntu 20.04.x (22.04.x) LTS* in the
-*Start Menu*, right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset*
+## 7. Resetting WSL
+
+If there is an issue with WSL, you can always reset it to a clean state. To do right lick on *Ubuntu* in the
+Start Menu, right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset*
 button. When the reset is complete close the settings window and restart *Ubuntu*.
 
-## 6. Known issues
+
+## 8. Troubleshooting
 
 ### 6.1 Flair couldn't connect to display
 
-If Flair shows the Following error message `couldn't connect to display`. Make sure that the X Server is running before launching Flair.
+If Flair shows the following error message `couldn't connect to display`. Make sure that the X Server is running before launching Flair.
 
-If Flair still can't connect and the error message contains an IP addess then you have WSL2 installed. See section 3.1.
+If Flair still can't connect and the error message contains an IP address then you have WSL2 installed. See section 5.1.
