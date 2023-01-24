@@ -135,7 +135,7 @@ button. When the reset is complete close the settings window and restart *Ubuntu
 
 ## 8. Troubleshooting
 
-### 6.1 Flair couldn't connect to display
+### 8.1 Flair couldn't connect to display
 
 If Flair shows the following error message `couldn't connect to display`. Make sure that the X Server is running before launching Flair.
 
