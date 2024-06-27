@@ -53,7 +53,7 @@ fi
 echo " - Adding Flair repository"
 
 # Add GPG key
-sudo wget -O /etc/apt/trusted.gpg.d/flair.asc https://cern.ch/flair/download/ubuntu/flair.gpg 2>> $logfile
+wget -O /etc/apt/trusted.gpg.d/flair.asc http://cern.ch/flair/download/ubuntu/flair.gpg 2>> $logfile
 if [ ! "$?" -eq 0 ]; then
     echo "   [ERROR] Couldn't add GPG key for Flair repository. Try again later."
     exit 1
