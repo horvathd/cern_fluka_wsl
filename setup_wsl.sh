@@ -23,14 +23,12 @@ else
 fi
 
 # Check Ubuntu version
-ubuntu_codename=$(lsb_release -c | awk '{print $2}')
+ubuntu_codename=$(lsb_release -sc 2> /dev/null)
 
 # Set repositories
 if [ "$ubuntu_codename" = "focal" ]; then
-    REPO="https://cern.ch/flair/download/ubuntu/20.04"
-elif [ "$ubuntu_codename" = "jammy" ]; then
-    REPO="https://cern.ch/flair/download/ubuntu/22.04"
-
+    : # Pass
+elif [ "$ubuntu_codename" = "jammy" ] || [ "$ubuntu_codename" = "noble" ]; then
     if [ $WSL != "0" ]; then
         # Adding Firefox repository for WSL 2, instead of the snapd version
         echo " - Adding Firefox repository"
@@ -45,7 +43,7 @@ Pin-Priority: 1001
         | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox >> $logfile 2>&1
     fi
 else
-    echo "   [ERROR] The installation script requires Ubuntu 20.04 or 22.04"
+    echo "   [ERROR] The installation script requires Ubuntu 20.04, 22.04 or 24.04"
     exit 1
 fi
 
@@ -60,6 +58,9 @@ if [ ! "$?" -eq 0 ]; then
 fi
 
 # Add repository
+ubuntu_number=$(lsb_release -sr 2> /dev/null)
+REPO=https://cern.ch/flair/download/ubuntu/"$ubuntu_number"
+
 add-apt-repository -y "deb [arch=all,amd64] $REPO ./" >> $logfile 2>&1
 if [ ! "$?" -eq 0 ]; then
     echo "   [ERROR] Couldn't add Flair repository. Try again later."
@@ -79,6 +80,9 @@ xargs -a package.list apt-get install -y >> $logfile 2>&1
 if [ ! "$?" -eq 0 ]; then
     echo "   [ERROR] Couldn't install the necessary packages. Try again later."
     exit 1
+fi
+if [ $WSL != "0" ]; then
+    xdg-mime default /usr/share/applications/firefox.desktop text/html
 fi
 
 # Copying script for environment variables
