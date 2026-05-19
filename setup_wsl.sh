@@ -26,7 +26,7 @@ fi
 ubuntu_codename=$(lsb_release -sc 2> /dev/null)
 
 # Set repositories
-if [ "$ubuntu_codename" = "jammy" ] || [ "$ubuntu_codename" = "noble" ]; then
+if [ "$ubuntu_codename" = "jammy" ] || [ "$ubuntu_codename" = "noble" ] || [ "$ubuntu_codename" = "resolute" ]; then
     if [ $WSL != "0" ]; then
         # Adding Firefox repository for WSL 2, instead of the snapd version
         echo " - Adding Firefox repository"
@@ -41,7 +41,7 @@ Pin-Priority: 1001
         | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox >> $logfile 2>&1
     fi
 else
-    echo "   [ERROR] The installation script requires Ubuntu 22.04 or 24.04"
+    echo "   [ERROR] The installation script requires Ubuntu 22.04, 24.04 and 26.04"
     exit 1
 fi
 
@@ -80,6 +80,7 @@ if [ ! "$?" -eq 0 ]; then
     exit 1
 fi
 if [ $WSL != "0" ]; then
+    mkdir -p /root/.config
     xdg-mime default /usr/share/applications/firefox.desktop text/html
 fi
 
