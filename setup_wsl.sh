@@ -57,12 +57,16 @@ if [ ! "$?" -eq 0 ]; then
     exit 1
 fi
 
-echo " - Installing packages"
+echo " - Installing packages (This may take a few minutes)"
 xargs -a package.list apt-get install -y >> $logfile 2>&1
 if [ ! "$?" -eq 0 ]; then
     echo "   [ERROR] Couldn't install the necessary packages. Try again later."
     exit 1
 fi
+
+# Set dummy app for text/html mime type. WSL2 will open pages on Windows
+mkdir -p /root/.config
+xdg-mime default dummy.desktop text/html
 
 echo ""
 echo "Setup complete. Please close and reopen Ubuntu to apply the changes."
