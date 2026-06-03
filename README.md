@@ -82,7 +82,7 @@ and use the following command:
 sudo apt install ./fluka_4-?.?.x64-Linux-gfor9_amd64.deb ./fluka-pw*
 ```
 
-After the installation, restart Windows or close *Ubuntu* and run in  *Terminal (Windows PowerShell)*:
+After the installation, restart Windows or close *Ubuntu* and run in a *Terminal (Windows PowerShell)*:
 
 ```
 wsl --shutdown
@@ -90,7 +90,7 @@ wsl --shutdown
 
 ## 4. Running simulations
 
-After starting *Ubuntu* you can launch Flair with the `falir` command, or you can run FLUKA from the command line.
+After starting *Ubuntu* you can launch Flair with the `flair` command, or you can run FLUKA from the command line.
 
 
 ## 5. Updating FLUKA and Flair
