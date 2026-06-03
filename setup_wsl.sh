@@ -8,18 +8,16 @@ if [ "$EUID" -ne 0 ]; then
     echo "        Please use: sudo ./setup_wsl.sh"
     exit 1
 else
-    echo "Setting up the system for FLUKA.CERN and installing Flair"
+    echo "Setting up the system for FLUKA and installing Flair"
     echo ""
 fi
 
 # Trying to determine WSL version
 uname=$(uname -r)
 
-if [ $(echo ${uname} | grep -i "microsoft") ]; then
-    WSL="1"
-else
-    WSL="0"
-    echo "   [WARNING] WSL version could not be determined. Assuming native Linux installation."
+if ! [ "$(echo "${uname}" | grep -i "microsoft")" ]; then
+    echo "   [ERROR] WSL version could not be determined or running on native Linux."
+    exit 1
 fi
 
 # Check Ubuntu version
