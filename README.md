@@ -61,7 +61,7 @@ The script will install the necessary packages and Flair. The setup process will
 **Note:** The sudo command executes a command with administrator privileges and may prompt for the password created during Ubuntu setup.
 
 
-## 3. Downloading and installing FLUKA
+## 3. Installing FLUKA
 
 After registering, you can download FLUKA from the [fluka.cern](https://fluka.cern/download/latest-fluka-release) website.
 Choose the following package for *Ubuntu*: `gfortran>=9, 64 bits (.deb)`.
