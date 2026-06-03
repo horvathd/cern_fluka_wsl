@@ -65,18 +65,6 @@ if [ ! "$?" -eq 0 ]; then
     echo "   [ERROR] Couldn't install the necessary packages. Try again later."
     exit 1
 fi
-if [ $WSL != "0" ]; then
-    mkdir -p /root/.config
-    xdg-mime default /usr/share/applications/firefox.desktop text/html
-fi
-
-# Copying script for environment variables
-echo " - Setting up environment variables"
-cp "flair_wsl.sh" /etc/profile.d/
-if [ ! "$?" -eq 0 ]; then
-    echo "   [ERROR] Couldn't set up environment variables. Try again later."
-    exit 1
-fi
 
 echo ""
 echo "Setup complete. Please close and reopen Ubuntu to apply the changes."
