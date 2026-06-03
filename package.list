@@ -13,8 +13,7 @@ python3-numpy
 python3-scipy
 python3-matplotlib
 python3-dicom
-libz-dev
-ttf-ancient-fonts
-firefox
+zlib1g-dev
+fonts-noto-core
 xdg-utils
 flair
