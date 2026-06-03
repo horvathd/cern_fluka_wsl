@@ -1,142 +1,132 @@
-# Installing FLUKA.CERN and Flair on Windows using WSL
+# Installing FLUKA and Flair on Windows with the Windows Subsystem for Linux (WSL)
 
-It is recommended to use the Windows Subsystem for Linux (WSL) for running CERN's FLUKA and Flair on Windows.
-The Windows Subsystem for Linux lets developers run GNU/Linux environment - including most command-line tools, utilities,
-and applications - directly on Windows, unmodified, without the overhead of a virtual machine.
+The Windows Subsystem for Linux (WSL) is a Microsoft technology that allows users to run a Linux environment
+directly on Windows without the need for a separate virtual machine or dual-boot setup.
 
+Since FLUKA, Flair, and many of its supporting tools are designed for Linux systems, WSL provides a convenient and
+efficient way to install, configure, and run FLUKA and Flair on Windows while maintaining compatibility with standard
+Linux-based workflows.
 
-## 1. Enable Windows Subsystem for Linux
-
-### 1.1. For Windows 10 version 2004 (build number 19041, released in May 2020) or newer and for Windows 11:
-
-Start a *PowerShell* as *Administrator* and run the following command:
-
-> `wsl --install`
-
-*Ubuntu* will be automatically installed as well.
-
-When the command asks, reboot the PC to finalize the installation.
-
-### 1.2. For older Windows 10 versions
-
-Follow the instructions from [here](https://learn.microsoft.com/en-us/windows/wsl/install-manual).
-
-You may skip Steps 2 through 5, if you don't want to update to WSL version 2.
-
-In Step 6, install *Ubuntu 20.04* or *Ubuntu 22.04*.
+WSL offers a lightweight Linux environment with access to common Linux utilities, compilers, and package managers,
+while remaining seamlessly integrated with the Windows desktop and file system.
 
 
-## 2. Initialize Ubuntu
+## 1. Installing WSL on Windows 11
 
-After the installation start *Ubuntu* from the start menu, or click the *Open* button in the *Microsoft Store*.
+Start the *Terminal (Windows PowerShell)* as Administrator and run the following command:
 
-After a couple minutes it will ask for a new Linux username and password. They can be anything, as they are not related
-to your Windows credentials.
+```
+wsl --install
+```
 
-After the initialization, *Ubuntu* works just like a native Linux system.
+This will install all the necessary system components and install the *Ubuntu* application. During the installation, you will be asked to
+set a username and password for *Ubuntu*. They can be anything, as they are not related to your Windows credentials.
 
-### 2.1. Accessing files in WSL
+When *Ubuntu* is installed, close the *Terminal (Windows PowerShell)* running as Administrator.
 
-The windows drives (C:\\, D:\\, etc.) are automatically mounted at: `/mnt/<drive_letter>/...`
+**Note:** If your account doesn't have Administrator rights, then you need to repeat the installation in a *Terminal* which
+is **not** running as Administrator.
 
 
-## 3. Setting up for FLUKA and installing Flair
-
-### 3.1. Running the setup script
+## 2. System setup and installing Flair
 
 Download the zip file containing the setup script from [here](https://github.com/horvathd/cern_fluka_wsl/archive/refs/heads/master.zip),
-and extract its content.
+and extract it to your Downloads folder.
 
-In the *Ubuntu* terminal change the directory to the location of the downloaded script and run the following command:
+Now you can start *Ubuntu* in the *Terminal* by clicking the down-arrow next to the tabs on the top,
+or in the standalone *Ubuntu* application in the Start menu.
 
-> `sudo ./setup_wsl.sh`
+Then change to the location of the extracted files with:
 
-The script will install Flair and the necessary packages FLUKA. The setup process will take a few minutes.
+```
+cd /mnt/c/Users/<YourUserName>/Downloads/cern_fluka_wsl-master/cern_fluka_wsl-master
+```
 
-Restart *Ubuntu* after the script finished.
+**Note:** You need to replace `<YourUserName>` with your Windows user name.
 
-### 3.2. Install an X Server
+To check the contents of the directory you can use the command:
 
-An X Server for Windows is necessary to visualize the Flair's graphical interface.
+```
+ls
+```
 
-#### 3.2.1. WSLg
+If the directory contains the `setup_wsl.sh` script, run it with:
 
-If you are using a WSL release with an included X Server you don't need to install any third-party X Server.
-Run the following command in *PowerShell* or *Ubuntu* to check if WSL's X Server is available:
+```
+sudo ./setup_wsl.sh
+```
 
-> `wsl.exe --version`
+The script will install the necessary packages and Flair. The setup process will take a few minutes.
 
-If you get a valid version number for WSLg then the X Server is working. Otherwise, a third-party X Server needs to be installed.
-The following two free X servers are recommended. Only one has to be installed.
-
-#### 3.2.2. Xming
-
-Download and install the *Public Domain Release* version from http://www.straightrunning.com/XmingNotes/
-
-#### 3.2.3. MobaXTerm
-
-Download and install the *Home* edition from https://mobaxterm.mobatek.net/
+**Note:** The sudo command executes a command with administrator privileges and may prompt for the password created during Ubuntu setup.
 
 
-## 4. Download and install FLUKA
+## 3. Downloading and installing FLUKA
 
-Download the GNU/Linux *\*gfor9_amd64.deb* package of FLUKA from [fluka.cern](https://fluka.cern/download/latest-fluka-release).
+After registering, you can download FLUKA from the [fluka.cern](https://fluka.cern/download/latest-fluka-release) website.
+Choose the following package for *Ubuntu*: `gfortran>=9, 64 bits (.deb)`.
 
-The steps of the installation can be found [here](https://fluka.cern/documentation/installation/fluka-linux-rpm-deb).
-See section: *Installing FLUKA using .deb files*.
+The default neutron library shall be downloaded in the `.deb` format as well.
 
-To finalize the installation *Ubuntu* must be closed and reopened.
+To install the packages, navigate to your Downloads directory in the *Ubuntu* window with:
+
+```
+cd /mnt/c/Users/<YourUserName>/Downloads
+```
+
+**Note:** You need to replace `<YourUserName>` with your Windows user name.
+
+and use the following command:
+
+```
+sudo apt install ./fluka_4-?.?.x64-Linux-gfor9_amd64.deb ./fluka-pw*
+```
+
+After the installation, restart Windows or close *Ubuntu* and run in  *Terminal (Windows PowerShell)*:
+
+```
+wsl --shutdown
+```
+
+## 4. Running simulations
+
+After starting *Ubuntu* you can launch Flair with the `falir` command, or you can run FLUKA from the command line.
 
 
-## 5. Running FLUKA and Flair
+## 5. Updating FLUKA and Flair
 
-### 5.1. Running the X Server
-
-If you installed a third-party X Server (Xming or MobaXTerm), you need to start it first.
-
-If you are using Xming with WSL2, then the XLaunch app must be used with *No Access Control* enabled, instead of Xming.
-
-### 5.2. Running Ubuntu
-
-Launch *Ubuntu* from the Start Menu.
-
-### 5.3. Running FLUKA and Flair
-
-See the instructions on [fluka.cern](https://fluka.cern/documentation/running)
-
-
-## 6. Updating FLUKA and Flair
-
-### 6.1. Update Flair
-
-To update Flair run the following commands:
-
-> `sudo apt-get update`
-
-> `sudo apt-get install flair flair-geoviewer`
+### 5.1. Updating Flair
 
 To update the whole Ubuntu system (including Flair) use:
 
-> `sudo apt-get update`
+```
+sudo apt update && sudo apt upgrade
+```
 
-> `sudo apt-get upgrade`
+In case you only want to update Flair use:
 
-### 6.2. Update FLUKA
+```
+sudo apt update && sudo apt upgrade flair flair-geoviewer
+```
 
-Manually install the latest package of FLUKA as described in section 4.
+### 5.2. Updating FLUKA
 
-
-## 7. Resetting WSL
-
-If there is an issue with WSL, you can always reset it to a clean state. To do right lick on *Ubuntu* in the
-Start Menu, right click on its icon, and select (*More*) *App settings*. In the new window click the *Reset*
-button. When the reset is complete close the settings window and restart *Ubuntu*.
+Manually install the latest package of FLUKA as described in section 3.
 
 
-## 8. Troubleshooting
+## 6. Resetting WSL
 
-### 8.1 Flair couldn't connect to display
+If you encounter problems with WSL, you can always reset it to a clean state. To do so, run the following command
+in the *Terminal (Windows PowerShell)*:
 
-If Flair shows the following error message `couldn't connect to display`. Make sure that the X Server is running before launching Flair.
+```
+wsl --unregister Ubuntu
+```
 
-If Flair still can't connect and the error message contains an IP address then you have WSL2 installed. See section 5.1.
+**Note:** This will delete all files in your *Ubuntu* home directory.
+
+To install *Ubuntu* again, run:
+
+```
+wsl --install
+```
