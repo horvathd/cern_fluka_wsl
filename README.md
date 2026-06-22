@@ -82,6 +82,9 @@ and use the following command:
 sudo apt install ./fluka_4-?.?.x64-Linux-gfor9_amd64.deb ./fluka-pw*
 ```
 
+**Note:** You need to replace `?` characters with the current version numbers, and `*` with the complete filename of the neutron data
+library.
+
 After the installation, restart Windows or close *Ubuntu* and run in a *Terminal (Windows PowerShell)*:
 
 ```
